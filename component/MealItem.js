@@ -1,6 +1,8 @@
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, TouchableNativeFeedback, Platform, ImageBackground } from 'react-native';
 
+import DefaultText from './DefaultText';
+
 
 const MealItem = props => {
   let Touchable = (Platform.OS === 'android' && Platform.Version >= 21) ? TouchableNativeFeedback : TouchableOpacity;
@@ -21,9 +23,9 @@ const MealItem = props => {
             </ImageBackground>
           </View>
           <View style={{ ...styles.mealRow, ...styles.mealDetails }}>
-            <Text>{props.duration} minutes</Text>
-            <Text>{props.complexity.toUpperCase()}</Text>
-            <Text>{props.affordability}</Text>
+            <DefaultText>{props.duration} min(s)</DefaultText>
+            <DefaultText>{props.complexity.toUpperCase()}</DefaultText>
+            <DefaultText>{props.affordability.toUpperCase()}</DefaultText>
           </View>
         </View>
       </Touchable>
@@ -54,7 +56,7 @@ const styles = StyleSheet.create({
   mealDetails: {
     height: "15%",
     justifyContent: 'space-between',
-    alignItems: 'center',
+    textAlign: 'center',
     paddingHorizontal: 15
   },
   titleContainer: {

@@ -1,64 +1,32 @@
 import React from 'react';
-import { View, Text, Button, StyleSheet, FlatList } from 'react-native';
 import { CATEGORIES, MEALS } from '../data/dummy-data';
-import MealItem from '../component/MealItem';
+
+import MealList from '../component/MealList';
+import { Dimensions, Platform } from 'react-native';
 
 
-const MealScreen = props => {
-  const renderMealItem = itemData => {
-    return (
-      <MealItem 
-        title={itemData.item.title}
-        image={itemData.item.imageUrl}
-        duration={itemData.item.duration}
-        complexity={itemData.item.complexity}
-        affordability={itemData.item.affordability}
-        onSelectMeal={() => {
-          props.navigation.navigate({
-            routeName: 'MealDetail',
-            params: {
-              mealId: itemData.item.id,
-              
-            }
-          })
-        }}
-      />
-    );
-  }
+const MealScreen = (props) => {
   const catId = props.navigation.getParam('categoryId');
-  const selectedCategory = CATEGORIES.find(cat => 
-    cat.id === catId
-  );
-  const displayMeals = MEALS.filter(meal => 
-    meal.categoryIds.includes(catId)
+  const displayMeals = MEALS.filter((meal) => 
+    meal.categoryIds.indexOf(catId) >= 0
   );
 
   return (
-    <View style={styles.screen}>
-      <FlatList
-        keyExtractor={(item, idx) => item.id}
-        data={displayMeals}
-        renderItem={renderMealItem}
-        style={{ width: '100%' }}
-      />
-    </View>
+    <MealList
+      listData={displayMeals}
+      navigation={props.navigation}
+    />
   );
 };
 MealScreen.navigationOptions = (props) => {
-  const catId = props.navigation.getParam('categoryId')
-  const selectedCategory = CATEGORIES.find(cat => cat.id === catId)
+  const catId = props.navigation.getParam('categoryId');
+  const selectedCategory = CATEGORIES.find((cat) => cat.id === catId);
   return {
     headerTitle: selectedCategory.title,
+    headerTitleStyle: {
+      fontFamily: 'open-sans-bold',
+    },
   };
-}
-
-const styles = StyleSheet.create({
-  screen: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    padding: 15
-  }
-});
+};
 
 export default MealScreen;

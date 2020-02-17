@@ -26,8 +26,15 @@ const styles = StyleSheet.create({
     flex: 1,
     margin: 15,
     height: 150,
-    borderRadius: 5,
-    overflow: 'hidden'
+    borderRadius: 10,
+    overflow: Platform.OS === 'android' && Platform.Version >= 21 
+      ? 'hidden'
+      : 'visible',
+    shadowColor: 'black',
+    shadowOpacity: 0.3,
+    shadowOffset: { width: 0, height: 2 },
+    shadowRadius: 10,
+    elevation: 5
   },
   container: {
     flex: 1,
@@ -35,10 +42,7 @@ const styles = StyleSheet.create({
     alignItems: 'flex-end',
     justifyContent: 'flex-end',
     padding: 15,
-    shadowColor: 'black',
-    shadowOpacity: 0.4,
-    shadowOffset: { width: 0, height: 2 },
-    elevation: 3
+    borderRadius: 10,
   },
   title: {
     fontFamily: 'open-sans-semibold',
