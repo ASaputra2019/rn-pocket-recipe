@@ -46,11 +46,11 @@ const MealDetailScreen = ({ navigation }) => {
         <DefaultText>{selectedMeals.complexity.toUpperCase()}</DefaultText>
         <DefaultText>{selectedMeals.affordability.toUpperCase()}</DefaultText>
       </View>
-      <Text style={styles.title}>Ingredients</Text>
+      <DefaultText style={styles.title}>Ingredients</DefaultText>
       {selectedMeals.ingredients.map((ingredient) => (
         <ListItem style={styles.content} key={ingredient}>{ingredient}</ListItem>
       ))}
-      <Text style={styles.title}>Steps</Text>
+      <DefaultText style={styles.title}>Steps</DefaultText>
       {selectedMeals.steps.map((step) => (
         <ListItem style={styles.content} key={step}>{step}</ListItem>
       ))}
