@@ -21,10 +21,10 @@ const FilterSwitch = props => {
 };
 
 const FiltersScreen = ({ navigation }) => {
-  const [isGluttenFree, setIsGluttenFree] = useState(false);
-  const [isLactoseFree, setIsLactoseFree] = useState(false);
-  const [isVegan, setIsVegan] = useState(false);
-  const [isVegetarian, setIsVegetarian] = useState(false);
+  const [ isGluttenFree, setIsGluttenFree ] = useState(false);
+  const [ isLactoseFree, setIsLactoseFree ] = useState(false);
+  const [ isVegan, setIsVegan ] = useState(false);
+  const [ isVegetarian, setIsVegetarian ] = useState(false);
 
   const saveFilters = useCallback(() => {
     const appliedFilters = {

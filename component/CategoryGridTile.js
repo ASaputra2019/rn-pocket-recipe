@@ -6,9 +6,7 @@ import { TouchableHighlight } from 'react-native-gesture-handler';
 const CategoryGridTile = props => {
   let Touchable = (Platform.OS === 'android' && Platform.Version >= 21) ? TouchableNativeFeedback : TouchableOpacity
   return (
-    <View
-      style={styles.gridItem}
-    >
+    <View style={styles.gridItem}>
       <Touchable
         onPress={props.onSelect}
         style={{ flex: 1 }}
